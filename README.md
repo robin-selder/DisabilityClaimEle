@@ -35,6 +35,32 @@ This application is built with a commitment to user privacy:
 2.  **Open `index.html`** in any modern web browser.
 3.  **No build process required**.
 
+## 🌐 Publishing to GitHub Pages
+
+This repository includes a GitHub Actions workflow that automatically deploys the application to GitHub Pages for testing and sharing.
+
+### Initial Setup (One-Time Configuration)
+
+1. Go to your repository **Settings** → **Pages**
+2. Under **Source**, select **GitHub Actions**
+3. The workflow will automatically run on the next push to the `main` branch
+
+### Usage
+
+- **Automatic Deployment**: Every push to the `main` branch automatically deploys to GitHub Pages
+- **Manual Deployment**: Go to **Actions** tab → **Deploy to GitHub Pages** workflow → **Run workflow** button
+- **Access Your Site**: After deployment, your site will be available at:
+  ```
+  https://[username].github.io/[repository-name]/
+  ```
+
+### Checking Deployment Status
+
+1. Navigate to the **Actions** tab in your GitHub repository
+2. Look for the **Deploy to GitHub Pages** workflow
+3. Click on a workflow run to see deployment details and status
+4. Once complete, the deployment URL will be shown in the deploy job
+
 ## 📂 Project Structure
 
 - `index.html`: Main application interface.
