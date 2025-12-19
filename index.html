@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disability Eligibility Evaluation - Free SSA Screening Tool</title>
+    <meta name="description"
+        content="Free preliminary disability eligibility screening tool based on Social Security Administration criteria. Evaluate your potential eligibility for disability benefits.">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Disability Eligibility Evaluation Tool">
+    <meta property="og:description"
+        content="Free preliminary screening tool to evaluate potential disability eligibility based on SSA criteria.">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Disability Eligibility Evaluation Tool">
+    <meta name="twitter:description" content="Free preliminary screening tool for disability eligibility.">
+
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Disability Eligibility Evaluation",
+      "description": "Preliminary disability eligibility screening tool based on SSA criteria",
+      "applicationCategory": "HealthApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "browserRequirements": "Requires JavaScript. Requires HTML5."
+    }
+    </script>
+</head>
+
+<body>
+    <!-- Skip Navigation Link -->
+    <a href="#mainContent" class="skip-link">Skip to main content</a>
+
+    <div class="container">
+        <header>
+            <h1>Disability Eligibility Evaluation</h1>
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar"></div>
+                <div class="progress-text" id="progressText">Step 1 of 8</div>
+            </div>
+        </header>
+
+        <main id="mainContent" role="main">
+            <!-- Page 0: Welcome & Disclaimer -->
+            <div class="page active" id="page0">
+                <h2>Welcome to the Disability Eligibility Evaluation</h2>
+                <p class="page-description">This free tool provides a preliminary assessment of potential disability
+                    eligibility based on Social Security Administration (SSA) criteria.</p>
+
+                <div class="disclaimer-box">
+                    <h3>⚠️ Important Information</h3>
+                    <p><strong>This tool is for informational purposes only and does not provide:</strong></p>
+                    <ul>
+                        <li>Official disability determinations</li>
+                        <li>Legal or medical advice</li>
+                        <li>Guaranteed outcomes for disability claims</li>
+                    </ul>
+                    <p>For an official determination, you must <a href="https://www.ssa.gov/disability" target="_blank"
+                            rel="noopener noreferrer">apply directly with the SSA</a>.</p>
+                </div>
+
+                <div class="privacy-notice">
+                    <h3>🔒 Your Privacy</h3>
+                    <p><strong>No personal information is collected or stored.</strong> All data you enter:</p>
+                    <ul>
+                        <li>Stays on your device only (browser sessionStorage)</li>
+                        <li>Is never transmitted to our servers</li>
+                        <li>Is automatically deleted when you close your browser</li>
+                    </ul>
+                    <p>Learn more: <a href="privacy-policy.html" target="_blank">Privacy Policy</a> | <a
+                            href="terms-of-service.html" target="_blank">Terms of Service</a></p>
+                </div>
+
+                <div class="consent-box">
+                    <label class="consent-label">
+                        <input type="checkbox" id="consentCheckbox" aria-required="true">
+                        <span>I understand this is a preliminary screening tool and not an official disability
+                            determination. I agree to the <a href="terms-of-service.html" target="_blank">Terms of
+                                Service</a>.</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Page 1: Employment History -->
+            <div class="page" id="page1">
+                <h2>Employment History</h2>
+                <p class="page-description">Please provide information about your job positions held within the last
+                    five years.</p>
+
+                <div id="jobsContainer">
+                    <div class="job-entry">
+                        <div class="form-group">
+                            <label for="jobTitle1">Job Title</label>
+                            <input type="text" id="jobTitle1" name="jobTitle1"
+                                placeholder="e.g., Retail Sales Associate">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="jobFrom1">From (mm/yyyy)</label>
+                                <input type="text" id="jobFrom1" name="jobFrom1" placeholder="e.g., 01/2019"
+                                    maxlength="7" class="date-input">
+                            </div>
+                            <div class="form-group">
+                                <label for="jobTo1">To (mm/yyyy)</label>
+                                <input type="text" id="jobTo1" name="jobTo1" placeholder="e.g., 12/2022" maxlength="7"
+                                    class="date-input">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="button" class="btn-secondary" id="addJobBtn">+ Add Another Job</button>
+            </div>
+
+            <!-- Page 2: Medical Conditions -->
+            <div class="page" id="page2">
+                <h2>Medical Conditions</h2>
+                <p class="page-description">Please list all diagnosed medical conditions (physical and psychological).
+                </p>
+
+                <div class="form-group">
+                    <label for="physicalConditions">Physical Conditions</label>
+                    <textarea id="physicalConditions" name="physicalConditions" rows="4"
+                        placeholder="List all physical conditions (e.g., back pain, arthritis, heart disease, respiratory issues)"></textarea>
+                    <span class="help-text">Include all diagnosed physical conditions and their severity</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="psychologicalConditions">Psychological/Mental Health Conditions</label>
+                    <textarea id="psychologicalConditions" name="psychologicalConditions" rows="4"
+                        placeholder="List all mental health conditions (e.g., depression, anxiety, PTSD, bipolar disorder)"></textarea>
+                    <span class="help-text">Include all diagnosed mental health conditions</span>
+                </div>
+            </div>
+
+            <!-- Page 3: Physical Limitations -->
+            <div class="page" id="page3">
+                <h2>Physical Limitations</h2>
+                <p class="page-description">Please describe your physical limitations and capabilities.</p>
+
+                <div class="form-group">
+                    <label for="standing">Standing Duration</label>
+                    <select id="standing" name="standing">
+                        <option value="">Select...</option>
+                        <option value="none">Cannot stand</option>
+                        <option value="less15">Less than 15 minutes</option>
+                        <option value="15-30">15-30 minutes</option>
+                        <option value="30-60">30-60 minutes</option>
+                        <option value="1-2hours">1-2 hours</option>
+                        <option value="2plus">More than 2 hours</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="sitting">Sitting Duration</label>
+                    <select id="sitting" name="sitting">
+                        <option value="">Select...</option>
+                        <option value="none">Cannot sit</option>
+                        <option value="less15">Less than 15 minutes</option>
+                        <option value="15-30">15-30 minutes</option>
+                        <option value="30-60">30-60 minutes</option>
+                        <option value="1-2hours">1-2 hours</option>
+                        <option value="2plus">More than 2 hours</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="walking">Walking Duration</label>
+                    <select id="walking" name="walking">
+                        <option value="">Select...</option>
+                        <option value="none">Cannot walk</option>
+                        <option value="less15">Less than 15 minutes</option>
+                        <option value="15-30">15-30 minutes</option>
+                        <option value="30-60">30-60 minutes</option>
+                        <option value="1-2hours">1-2 hours</option>
+                        <option value="2plus">More than 2 hours</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="lifting">Maximum Lifting Capacity</label>
+                    <select id="lifting" name="lifting">
+                        <option value="">Select...</option>
+                        <option value="none">Cannot lift anything</option>
+                        <option value="sedentary">Up to 10 lbs (Sedentary)</option>
+                        <option value="light">Up to 20 lbs (Light)</option>
+                        <option value="medium">Up to 50 lbs (Medium)</option>
+                        <option value="heavy">More than 50 lbs (Heavy)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="assistiveDevices">Assistive Devices Required</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="device" value="cane"> Cane</label>
+                        <label><input type="checkbox" name="device" value="walker"> Walker</label>
+                        <label><input type="checkbox" name="device" value="wheelchair"> Wheelchair</label>
+                        <label><input type="checkbox" name="device" value="crutches"> Crutches</label>
+                        <label><input type="checkbox" name="device" value="brace"> Brace/Support</label>
+                        <label><input type="checkbox" name="device" value="other"> Other</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Page 4: Cognitive Limitations -->
+            <div class="page" id="page4">
+                <h2>Cognitive Limitations</h2>
+                <p class="page-description">Please provide information about cognitive assessments (if available).</p>
+
+                <div class="form-group">
+                    <label for="iqScore">IQ Score (if tested)</label>
+                    <input type="number" id="iqScore" name="iqScore" min="0" max="200" placeholder="e.g., 85">
+                    <span class="help-text">Leave blank if not tested</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="wechslerScore">Wechsler Score (if tested)</label>
+                    <input type="number" id="wechslerScore" name="wechslerScore" min="0" max="200"
+                        placeholder="e.g., 75">
+                    <span class="help-text">Leave blank if not tested</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="cognitiveIssues">Cognitive Difficulties</label>
+                    <textarea id="cognitiveIssues" name="cognitiveIssues" rows="4"
+                        placeholder="Describe any difficulties with memory, concentration, understanding, following instructions, etc."></textarea>
+                </div>
+            </div>
+
+            <!-- Page 5: Personal Care -->
+            <div class="page" id="page5">
+                <h2>Personal Care & Daily Activities</h2>
+                <p class="page-description">Please indicate your ability to perform daily activities.</p>
+
+                <div class="form-group">
+                    <label>Shopping</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="shopping" value="independent"> Can do independently</label>
+                        <label><input type="radio" name="shopping" value="assistance"> Need some assistance</label>
+                        <label><input type="radio" name="shopping" value="unable"> Unable to do</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Cooking</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="cooking" value="independent"> Can do independently</label>
+                        <label><input type="radio" name="cooking" value="assistance"> Need some assistance</label>
+                        <label><input type="radio" name="cooking" value="unable"> Unable to do</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Home Cleaning</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="cleaning" value="independent"> Can do independently</label>
+                        <label><input type="radio" name="cleaning" value="assistance"> Need some assistance</label>
+                        <label><input type="radio" name="cleaning" value="unable"> Unable to do</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Driving</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="driving" value="independent"> Can drive independently</label>
+                        <label><input type="radio" name="driving" value="limited"> Limited driving ability</label>
+                        <label><input type="radio" name="driving" value="unable"> Cannot drive</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Personal Hygiene</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="hygiene" value="independent"> Can do independently</label>
+                        <label><input type="radio" name="hygiene" value="assistance"> Need some assistance</label>
+                        <label><input type="radio" name="hygiene" value="unable"> Unable to do</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Page 6: Educational History -->
+            <div class="page" id="page6">
+                <h2>Educational History</h2>
+                <p class="page-description">Please provide information about your educational background.</p>
+
+                <div class="form-group">
+                    <label for="lastGrade">Level Completed</label>
+                    <select id="lastGrade" name="lastGrade">
+                        <option value="">Select...</option>
+                        <option value="0-8">8th grade or less</option>
+                        <option value="9">9th grade</option>
+                        <option value="10">10th grade</option>
+                        <option value="11">11th grade</option>
+                        <option value="12">12th grade</option>
+                        <option value="ged">GED</option>
+                        <option value="highschool">High School Diploma</option>
+                        <option value="some-college">Some College</option>
+                        <option value="associate">Associate Degree</option>
+                        <option value="bachelor">Bachelor's Degree</option>
+                        <option value="graduate">Graduate Degree</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="specialEducation">Special Education</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="specialEducation" value="yes"> Yes</label>
+                        <label><input type="radio" name="specialEducation" value="no"> No</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="literacy">Reading and Writing Ability</label>
+                    <select id="literacy" name="literacy">
+                        <option value="">Select...</option>
+                        <option value="illiterate">Cannot read or write</option>
+                        <option value="limited">Limited ability</option>
+                        <option value="marginal">Marginal ability</option>
+                        <option value="proficient">Proficient</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Page 7: Employment Date -->
+            <div class="page" id="page7">
+                <h2>Employment Status</h2>
+                <p class="page-description">Please provide your current employment status.</p>
+
+                <div class="form-group">
+                    <label for="currentlyWorking">Currently Working</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="currentlyWorking" value="yes"> Yes</label>
+                        <label><input type="radio" name="currentlyWorking" value="no"> No</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="lastEmployed">Last Employed</label>
+                    <input type="text" id="lastEmployed" name="lastEmployed" placeholder="mm/yyyy" maxlength="7"
+                        class="date-input">
+                    <span class="help-text">Select your last month and year of work</span>
+                </div>
+            </div>
+
+            <!-- Page 8: Age -->
+            <div class="page" id="page8">
+                <h2>Personal Information</h2>
+                <p class="page-description">Please provide your current age.</p>
+
+                <div class="form-group">
+                    <label for="currentAge">Current Age</label>
+                    <input type="number" id="currentAge" name="currentAge" min="0" max="120" placeholder="e.g., 45">
+                    <span class="help-text">Step 8: Final Step - Enter age to generate results</span>
+                </div>
+            </div>
+
+            <!-- Results Page -->
+            <div class="page" id="resultsPage">
+                <div class="results-container">
+                    <h2>Evaluation Results</h2>
+
+                    <div class="result-determination" id="resultDetermination">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+
+                    <div class="result-explanation" id="resultExplanation">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+
+                    <div class="disclaimer">
+                        <h3>Important Disclaimer</h3>
+                        <p>This is only a <strong>preliminary screening tool</strong> and does not constitute an
+                            official disability determination. Each disability claim is examined and adjudicated by the
+                            Social Security Administration based on all collected medical evidence, work history, and
+                            individual circumstances.</p>
+                        <p>This evaluation is for informational purposes only and should not be relied upon as legal or
+                            medical advice. If you are unable to sustain any form of gainful employment due to your
+                            health conditions,
+                            we strongly recommend
+                            <a href="https://www.ssa.gov/disability" target="_blank"
+                                rel="noopener noreferrer">submitting a formal application to the SSA</a>
+                            for an official determination.
+                        </p>
+                    </div>
+
+                    <div class="result-actions">
+                        <button type="button" class="btn-primary" id="printResults">Print Results</button>
+                        <button type="button" class="btn-secondary" id="startOver">Start New Evaluation</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <div class="site-footer">
+            <p>
+                <a href="privacy-policy.html" target="_blank">Privacy Policy</a> |
+                <a href="terms-of-service.html" target="_blank">Terms of Service</a> |
+                <a href="accessibility-statement.html" target="_blank">Accessibility</a>
+            </p>
+            <p class="copyright">© 2024 Disability Eligibility Evaluation. For informational purposes only.</p>
+        </div>
+
+        <footer role="contentinfo">
+            <div class="navigation-buttons">
+                <button type="button" class="btn-secondary" id="backBtn" disabled>← Back</button>
+                <button type="button" class="btn-primary" id="nextBtn">Next →</button>
+            </div>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
