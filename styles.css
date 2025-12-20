@@ -605,6 +605,59 @@ footer {
     flex-wrap: wrap;
 }
 
+/* SSA Age Guidelines Styles */
+.ssa-age-guidelines {
+    text-align: left;
+    background: var(--bg-primary);
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--spacing-xl);
+    border: 1px solid var(--border-color);
+}
+
+.ssa-age-guidelines h3 {
+    color: var(--text-primary);
+    margin-top: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
+    font-size: var(--font-size-lg);
+}
+
+.ssa-age-guidelines h3:first-child {
+    margin-top: 0;
+}
+
+.ssa-age-guidelines p {
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-md);
+}
+
+.ssa-age-guidelines ul {
+    margin-left: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
+}
+
+.ssa-age-guidelines li {
+    margin-bottom: var(--spacing-sm);
+    color: var(--text-secondary);
+}
+
+.eligibility-links {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-sm);
+}
+
+.listing-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.listing-link:hover {
+    text-decoration: underline;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     body {

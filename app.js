@@ -418,12 +418,15 @@ class DisabilityEvaluationApp {
         const recommendations = [];
 
         // Age evaluation (Grid Rules)
-        if (age >= 55) {
+        if (age >= 60) {
             score += 3;
-            factors.push(`Age ${age} - Closely approaching advanced age, favorable under Grid Rules`);
+            factors.push(`Age ${age} - Closely Approaching Retirement Age, very favorable under Grid Rules`);
+        } else if (age >= 55) {
+            score += 3;
+            factors.push(`Age ${age} - Advanced Age, favorable under Grid Rules`);
         } else if (age >= 50) {
             score += 2;
-            factors.push(`Age ${age} - Approaching advanced age, considered in Grid Rules`);
+            factors.push(`Age ${age} - Closely Approaching Advanced Age, considered in Grid Rules`);
         } else if (age < 18) {
             factors.push(`Age ${age} - Childhood disability criteria apply`);
         } else {
